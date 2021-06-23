@@ -26,3 +26,11 @@ def hello_there(name = None):
 @app.route("/api/data")
 def get_data():
     return app.send_static_file("data.json")
+
+@app.route("convert_temp/<temp>")
+def convert_temp(temp):
+    input_temp = float(temp)
+    #conversion
+    f_to_c = ((input_temp - 32) * (5.0 /9.0))
+    
+    return "{:.1f}".format(input_temp) + " degrees F is " + "{:.1f}".format(f_to_c) + " degrees C"
