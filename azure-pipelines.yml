@@ -85,4 +85,5 @@ stages:
               azureSubscription: $(azureServiceConnectionId)
               appName: $(webAppName)
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-              startUpCommand: 'gunicorn --bind=0.0.0.0 --workers=4 startup:app'
+              script: 'az webapp config set -g lamar.frankie_rg_linux_centralus -n lamar2032 --startup-file startup.txt'
+
