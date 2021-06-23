@@ -85,5 +85,10 @@ stages:
               azureSubscription: $(azureServiceConnectionId)
               appName: $(webAppName)
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-              script: 'az webapp config set -g lamar.frankie_rg_linux_centralus -n lamar2032 --startup-file startup.txt'
+          - task: CmdLine@2
+            inputs:
+              script: 'az webapp up -n lamar2032'
+          - task: CmdLine@3
+            inputs:
+              script: 'az webapp config set -g lamar.frankie_rg_Linux_centralus -n lamar2032 --startup-file startup.txt'
 
